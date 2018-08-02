@@ -17,19 +17,29 @@ __mtime__ = '2018/7/25'
                   ┗┻┛  ┗┻┛
 """
 
-
+import os
 import unittest
 # 注意要定位到类进行导入，因为下面是直接使用类进行操作，更方便
 from PDDemo.Page.Search_Page import Search_Page
 from BeautifulReport import BeautifulReport
 from selenium import webdriver
-from time import sleep
 
 
 class Search_Case(unittest.TestCase):
     '''百度搜索测试用例'''
 
-    ## 使用优化过后的测试报告,需要使用:https://blog.csdn.net/maybe_frank/article/details/79352097
+    def save_img(self, img_name):
+        """
+        ## 为了让BeautifulReport进行自动的失败截图，必须在测试类定义该save_img方法
+          传入一个img_name, 并存储到默认的文件路径下：当前项目的img文件夹，必须存在该文件夹！！
+        :param img_name: 图片名称，无需后缀
+        :return:
+        """
+        self.driver.get_screenshot_as_file('{}/{}.png'.format(os.path.abspath('img'), img_name))
+        # 封装了截图方法到别的类然后进行调用的话，无法进行失败截图。可能是BeautifulReport进行了限制
+        # 和上面的img文件夹一样，如有需要，可以去源码进行更改
+        # Search_Page.screen_shot(img_name, img_path)
+
     @classmethod
     def setUpClass(cls):
         # 准备环境
@@ -41,7 +51,8 @@ class Search_Case(unittest.TestCase):
         cls.content_two = "中国"
         cls.content_three = "Python"
 
-    @BeautifulReport.add_test_img('测试成功.png')
+    # 注意，截图名称要和方法名称一致，否则报告生成的图片路径找不到
+    @BeautifulReport.add_test_img('test_one')
     def test_one(self):
         ''' 英文+数字的内容搜索 '''
         search_page = Search_Page(self.driver, self.url)
@@ -50,7 +61,7 @@ class Search_Case(unittest.TestCase):
         search_page.button_click()
         self.assertTrue(search_page.is_success(self.content_one))
 
-    @BeautifulReport.add_test_img('测试失败.png')
+    @BeautifulReport.add_test_img('test_two')
     def test_two(self):
         ''' 中文的内容搜索 '''
         search_page = Search_Page(self.driver, self.url)
@@ -59,20 +70,14 @@ class Search_Case(unittest.TestCase):
         search_page.button_click()
         self.assertTrue(search_page.is_success(self.content_two))
 
-    @BeautifulReport.add_test_img('test2.png')
+    @BeautifulReport.add_test_img('test_three')
     def test_three(self):
         ''' 英文的内容搜索 '''
         search_page = Search_Page(self.driver, self.url)
         search_page.open()
         search_page.search_content(self.content_three)
         search_page.button_click()
-        # self.driver.get_screenshot_as_file(r"E:\git_lzl\Selenium_Demo\PDDemo\TestCase\img\test2.png")
-        # BeautifulReport.add_test_img(r"E:\git_lzl\Selenium_Demo\PDDemo\TestCase\img\test2.png")
         self.assertTrue(search_page.is_success(self.content_three))
-
-
-
-
 
     ## 如SetUp
     @classmethod
@@ -80,5 +85,5 @@ class Search_Case(unittest.TestCase):
         cls.driver.quit()
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

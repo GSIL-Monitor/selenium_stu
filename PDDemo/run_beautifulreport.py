@@ -2,7 +2,6 @@
 from BeautifulReport import BeautifulReport
 import unittest
 import os
-import time
 
 
 class Beautiful_Report:

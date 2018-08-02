@@ -44,3 +44,6 @@ class Search_Page(BasePage):
 
     def is_success(self, current_url):
         return self.is_current_url(current_url)
+
+    # def screen_capture(self, img_name):
+    #     return self.screen_shot(img_name)
