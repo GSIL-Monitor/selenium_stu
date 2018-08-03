@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # TestCase路径
     test_path = os.path.join(base_path, 'TestCase')
     # html测试报告路径
-    report_path = os.path.join(base_path, 'report')
+    report_path = os.path.join(base_path, 'Report')
 
     report = Beautiful_Report()
     test_suite = report.add_test_case(test_path, py_rule='tc_sea*.py')

@@ -140,7 +140,7 @@ if __name__ == "__main__":
 
 
     email_content = "UI自动化测试报告结果，请查收附件"
-    report_path = os.path.join(os.path.dirname(os.getcwd()), 'report', 'html')
+    report_path = os.path.join(os.path.dirname(os.getcwd()), 'Report', 'html')
     adjunct_path = Email.get_new_report(report_path)
     # 注意：文件名称不能有中文，否则附件会出错
     part_name = 'UI_result.html'

@@ -109,7 +109,7 @@ if __name__ == "__main__":
     """
     email_subject = "邮件主题"
     email_from = "发件人"
-    source_path = r"E:\git_lzl\Selenium_Demo\PDDemo\report\html\2018-07-31-report.html"
+    source_path = r"E:\git_lzl\Selenium_Demo\PDDemo\Report\html\2018-07-31-Report.html"
     part_name = 'avatar.png'
 
     email_obj = get_email_obj(email_subject, email_from, to_addr_list)

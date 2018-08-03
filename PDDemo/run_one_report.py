@@ -1,4 +1,4 @@
-from PDDemo.report import HTMLTestRunner_jpg
+from PDDemo.Report import HTMLTestRunner_jpg
 import unittest
 import os
 import time
@@ -14,7 +14,7 @@ obj_path = os.path.dirname(os.path.realpath(__file__))
 # 测试用例的存放路径
 test_path = os.path.join(obj_path, "TestCase")
 # 测试报告的存放路径
-report_path = os.path.join(obj_path, "report", 'html')
+report_path = os.path.join(obj_path, "Report", 'html')
 
 class RunTest():
 
@@ -31,7 +31,7 @@ class RunTest():
 
         # 测试报告的名称；时间中间不能用:隔开，会生成不了对应的文件
         now_time = time.strftime('%Y-%m-%d', time.localtime())
-        report_name = "\\" + now_time + "-report.html"
+        report_name = "\\" + now_time + "-Report.html"
 
         # 生成测试报告
         report = HTMLTestRunner_jpg.HTMLTestRunner(

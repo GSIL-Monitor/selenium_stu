@@ -11,22 +11,22 @@ Commands:
 2rows           Print the contents of first and last row in each sheet
 3rows           Print the contents of first, second and last row in each sheet
 bench           Same as "show", but doesn't print -- for profiling
-biff_count[1]   Print a count of each type of BIFF record in the file
-biff_dump[1]    Print a dump (char and hex) of the BIFF records in the file
+biff_count[1]   Print a count of each type of BIFF record in the File
+biff_dump[1]    Print a dump (char and hex) of the BIFF records in the File
 fonts           hdr + print a dump of all font objects
-hdr             Mini-overview of file (no per-sheet information)
+hdr             Mini-overview of File (no per-sheet information)
 hotshot         Do a hotshot profile run e.g. ... -f1 hotshot bench bigfile*.xls
 labels          Dump of sheet.col_label_ranges and ...row... for each sheet
 name_dump       Dump of each object in book.name_obj_list
 names           Print brief information for each NAME record
-ov              Overview of file
+ov              Overview of File
 profile         Like "hotshot", but uses cProfile
 show            Print the contents of all rows in each sheet
 version[0]      Print versions of xlrd and Python and exit
 xfc             Print "XF counts" and cell-type counts -- see code for details
 
-[0] means no file arg
-[1] means only one file arg i.e. no glob.glob pattern
+[0] means no File arg
+[1] means only one File arg i.e. no glob.glob pattern
 """
 
 options = None
@@ -229,7 +229,7 @@ if __name__ == "__main__":
     def main(cmd_args):
         import optparse
         global options, PSYCO
-        usage = "\n%prog [options] command [input-file-patterns]\n" + cmd_doc
+        usage = "\n%prog [options] command [input-File-patterns]\n" + cmd_doc
         oparser = optparse.OptionParser(usage)
         oparser.add_option(
             "-l", "--logfilename",
@@ -256,7 +256,7 @@ if __name__ == "__main__":
         oparser.add_option(
             "-g", "--gc",
             type="int", default=0,
-            help="0: auto gc enabled; 1: auto gc disabled, manual collect after each file; 2: no gc")
+            help="0: auto gc enabled; 1: auto gc disabled, manual collect after each File; 2: no gc")
         oparser.add_option(
             "-s", "--onesheet",
             default="",
