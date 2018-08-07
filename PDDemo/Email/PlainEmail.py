@@ -24,8 +24,6 @@ from email.mime.multipart import MIMEMultipart
 # 主要用于完善邮箱内容和标题的定义
 from email.mime.text import MIMEText
 from email.header import Header
-# 用来添加邮件的附件
-from email.mime.base import MIMEBase
 import os
 
 class PlainEmail:
@@ -126,14 +124,14 @@ from PDDemo.run_one_report import RunTest
 if __name__ == "__main__":
 
     #先执行下测试用例
-    RunTest().do_report()
+    # RunTest().do_report()
 
     Email = PlainEmail()
 
-    email_host = 'imap.exmail.qq.com'
+    email_host = 'xxx'
     host_port = 465
-    from_addr = 'zonglin_lin@mrxdtech.com'
-    pwd = 'MRXDlzl123'
+    from_addr = 'xxx'
+    pwd = 'xxxx'
     to_addr_list = ["249837922@qq.com"]
     email_subject = "UI自动化测试报告"
     email_from = 'LZL'
@@ -146,11 +144,12 @@ if __name__ == "__main__":
     part_name = 'UI_result.html'
 
     # 正文若是文本则不需要写，因为方法默认是plain了。
-    # content_type = 'plain'
+    content_type = 'plain'
 
     email_obj = Email.get_email_obj(email_subject, email_from, to_addr_list)
     #  正文若是文本则不需要传参content_type
     Email.attach_content(email_obj, email_content)
     Email.attach_adjunct(email_obj, adjunct_path, part_name)
     Email.send_mail(email_obj, email_host, host_port, from_addr, pwd, to_addr_list)
+
 

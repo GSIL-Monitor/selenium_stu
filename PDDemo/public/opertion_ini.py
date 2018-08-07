@@ -65,14 +65,14 @@ class operation_ini:
 
 
 
-# if __name__ == '__main__':
-#     ini_path = os.path.join(os.path.dirname(os.getcwd()), 'File', 'test.ini')
-#     file = operation_ini(ini_path)
-#     sections = file.get_sections()
-#     print(sections)
-#     options = file.get_options('url')
-#     print(options)
-#     items = file.get_items('url')
-#     print(items)
-#     value = file.get_value('url','taobao_url')
-#     print(value)
+if __name__ == '__main__':
+    ini_path = os.path.join(os.path.dirname(os.getcwd()), 'File', 'test.ini')
+    file = operation_ini(ini_path)
+    sections = file.get_sections()
+    print(sections)
+    options = file.get_options('url')
+    print(options)
+    items = file.get_items('url')
+    print(items)
+    value = file.get_value('url','taobao_url')
+    print(value)
